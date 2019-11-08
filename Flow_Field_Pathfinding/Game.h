@@ -1,0 +1,36 @@
+//
+// C00204076
+// Brandon Seah-Dempsey
+// Started at 10:06 8 November 2019
+// Finished at
+// Time taken:
+// Known bugs:
+
+#ifndef GAME_H
+#define GAME_H
+
+#include <SFML/Graphics.hpp>
+
+//
+class Game
+{
+public:
+	Game();
+	~Game();
+
+	void run();
+
+private:
+	void initialise();
+	void processEvents(); //Process all game events
+	void processGameEvents(sf::Event&);
+	void processInput();
+	void update(sf::Time deltaTime);
+	void render();
+
+	sf::RenderWindow m_window;
+	bool is_running;
+};
+
+#endif // !GAME_H
+
