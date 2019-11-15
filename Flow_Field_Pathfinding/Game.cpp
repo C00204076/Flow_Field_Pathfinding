@@ -12,7 +12,7 @@
 /// 
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ 1500, 900, 32}, "Flow Field" },
+	m_window{ sf::VideoMode{ 1450, 1450, 32}, "Flow Field" },
 	is_running{ true }
 {
 	initialise();
@@ -23,7 +23,7 @@ Game::Game() :
 /// </summary>
 Game::~Game()
 {
-
+	//delete this;
 }
 
 /// <summary>
@@ -31,7 +31,7 @@ Game::~Game()
 /// </summary>
 void Game::initialise()
 {
-
+	m_tileMap = new TileMap((float)50.0f);
 }
 
 /// <summary>
@@ -144,6 +144,7 @@ void Game::update(sf::Time deltaTime)
 		m_window.close();
 	}
 
+	m_tileMap->update(deltaTime);
 }
 
 /// <summary>
@@ -153,6 +154,7 @@ void Game::render()
 {
 	m_window.clear(sf::Color::Black); //Set background to black
 
+	m_tileMap->render(m_window);
 
 	m_window.display();
 }

@@ -25,13 +25,14 @@ public:
 	Tile(int type, int gridX, int gridY);
 	~Tile();
 
-protected:
-	sf::Sprite m_sprite;
-	bool m_collision;
-	int m_type;
+	void render(sf::RenderWindow& window);
+	sf::Vector2f getPosition();
 
 private:
-
+	void initialise();
+	sf::RectangleShape m_square;
+	sf::Vector2f m_position;
+	int m_type, m_x, m_y;
 };
 
 #endif // !TILE_H

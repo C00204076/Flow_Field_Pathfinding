@@ -11,6 +11,8 @@
 
 #include <SFML/Graphics.hpp>
 
+class TileMap;
+
 //
 class Game
 {
@@ -30,7 +32,11 @@ private:
 
 	sf::RenderWindow m_window;
 	bool is_running;
+
+	TileMap* m_tileMap;
 };
+
+#include "TileMap.h"
 
 #endif // !GAME_H
 

@@ -15,22 +15,20 @@
 class TileMap
 {
 public:
-	TileMap(float  gridSize, unsigned width, unsigned height);
+	TileMap(float gridSize);
 	~TileMap();
 
-	void addTile(const float x, const float y);
-	void removeTile();
-	void update();
-	void render(sf::RenderTarget& target);
+	/*void addTile(const float x, const float y);
+	void removeTile();*/
+	void update(sf::Time deltaTime);
+	void render(sf::RenderWindow& window);
 
 private:
-	float m_gridSizeF;
-	unsigned m_gridSizeU;
-	unsigned m_layers;
+	void initialise();
 
-	sf::Vector2u m_maxSize;
-
-	std::vector< std::vector< std::vector<Tile*> > > m_map;
+	float m_maxSize;
+	Tile* m_tiles[50][50];
+	
 };
 
 #endif // !TILEMAP_H

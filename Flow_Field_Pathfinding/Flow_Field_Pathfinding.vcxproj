@@ -139,12 +139,10 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Goal.h" />
-    <ClInclude Include="Obstacle.h" />
-    <ClInclude Include="Start.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileMap.h" />
   </ItemGroup>
