@@ -26,7 +26,13 @@ public:
 	~Tile();
 
 	void render(sf::RenderWindow& window);
+
+	int getType();
 	sf::Vector2f getPosition();
+	sf::RectangleShape getRect();
+
+	void setColour();
+	void setType(int type);
 
 private:
 	void initialise();

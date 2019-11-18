@@ -18,16 +18,18 @@ public:
 	TileMap(float gridSize);
 	~TileMap();
 
-	/*void addTile(const float x, const float y);
-	void removeTile();*/
-	void update(sf::Time deltaTime);
+	void update(sf::Time deltaTime, sf::RenderWindow& window);
 	void render(sf::RenderWindow& window);
+
+	void tileSetting(sf::RenderWindow& window);
 
 private:
 	void initialise();
 
 	float m_maxSize;
 	Tile* m_tiles[50][50];
+
+	int m_startTile, m_goalTile;
 	
 };
 

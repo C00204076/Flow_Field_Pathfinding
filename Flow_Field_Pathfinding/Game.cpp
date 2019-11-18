@@ -144,7 +144,7 @@ void Game::update(sf::Time deltaTime)
 		m_window.close();
 	}
 
-	m_tileMap->update(deltaTime);
+	m_tileMap->update(deltaTime, m_window);
 }
 
 /// <summary>

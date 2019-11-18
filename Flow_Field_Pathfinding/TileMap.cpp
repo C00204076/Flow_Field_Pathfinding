@@ -10,7 +10,7 @@
 
 //
 TileMap::TileMap(float gridSize) :
-	m_maxSize(gridSize)
+m_maxSize(gridSize)
 {
 	initialise();
 }
@@ -24,6 +24,9 @@ TileMap::~TileMap()
 //
 void TileMap::initialise()
 {
+	m_startTile = 0;
+	m_goalTile = 0;
+
 	for (int i = 0; i < m_maxSize; i++)
 	{
 		for (int j = 0; j < m_maxSize; j++)
@@ -33,26 +36,70 @@ void TileMap::initialise()
 	}
 }
 
-//
-/*void TileMap::addTile(const float x, const float y) 
-{
 
+void TileMap::update(sf::Time deltaTime, sf::RenderWindow& window)
+{
+	tileSetting(window);
 }
 
-void TileMap::removeTile()
-{
 
-}*/
 
-void TileMap::update(sf::Time deltaTime)
+//
+void TileMap::tileSetting(sf::RenderWindow& window)
 {
-	/*for (int i = 0; i < m_maxSize; i++)
+	for (int i = 0; i < m_maxSize; i++)
 	{
 		for (int j = 0; j < m_maxSize; j++)
 		{
+			//
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				if (m_tiles[i][j]->getRect().getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+				{
+					// Set Tiles to green/Start
+					m_tiles[i][j]->setType(1);
+					m_startTile++;
+				}
 
-		}
-	}*/
+				if (m_tiles[i][j]->getType() == 1)
+				{
+					if (!m_tiles[i][j]->getRect().getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+					{
+						m_tiles[i][j]->setType(0);
+					}
+				}
+			}
+
+			//
+			else if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+			{
+				if (m_tiles[i][j]->getRect().getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+				{
+					// Set Tiles to red/Goal
+					m_tiles[i][j]->setType(2);
+					m_goalTile++;
+				}
+
+				if (m_tiles[i][j]->getType() == 2)
+				{
+					if (!m_tiles[i][j]->getRect().getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+					{
+						m_tiles[i][j]->setType(0);
+					}
+				}
+			}
+
+			//
+			else if (sf::Mouse::isButtonPressed(sf::Mouse::Middle))
+			{
+				if (m_tiles[i][j]->getRect().getGlobalBounds().contains(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+				{
+					// Set Tiles to black/Obstacle
+					m_tiles[i][j]->setType(3);
+				}
+			}
+		}// End For Loop #2
+	} // End For Loop #1
 }
 
 void TileMap::render(sf::RenderWindow& window)
