@@ -29,10 +29,12 @@ public:
 
 	int getType();
 	sf::Vector2f getPosition();
+	sf::Vector2f getWorldPosition();
 	sf::RectangleShape getRect();
 
 	void setColour();
 	void setType(int type);
+	void setValue(int value);
 
 private:
 	void initialise();
@@ -40,6 +42,8 @@ private:
 	sf::Vector2f m_position;
 	int m_type, m_x, m_y;
 	int m_value;
+
+	sf::Text m_valueText;
 };
 
 #endif // !TILE_H

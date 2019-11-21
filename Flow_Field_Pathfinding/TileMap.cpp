@@ -24,9 +24,6 @@ TileMap::~TileMap()
 //
 void TileMap::initialise()
 {
-	m_startTile = 0;
-	m_goalTile = 0;
-
 	for (int i = 0; i < m_maxSize; i++)
 	{
 		for (int j = 0; j < m_maxSize; j++)
@@ -34,6 +31,8 @@ void TileMap::initialise()
 			m_tiles[i][j] = new Tile(0, i, j);
 		}
 	}
+
+	m_entity = new Entity();
 }
 
 
@@ -58,7 +57,8 @@ void TileMap::tileSetting(sf::RenderWindow& window)
 				{
 					// Set Tiles to green/Start
 					m_tiles[i][j]->setType(1);
-					m_startTile++;
+					m_entity->setX(m_tiles[i][j]->getPosition().x + 14);
+					m_entity->setY(m_tiles[i][j]->getPosition().y + 14);
 				}
 
 				if (m_tiles[i][j]->getType() == 1)
@@ -68,6 +68,8 @@ void TileMap::tileSetting(sf::RenderWindow& window)
 						m_tiles[i][j]->setType(0);
 					}
 				}
+
+				
 			}
 
 			//
@@ -77,7 +79,6 @@ void TileMap::tileSetting(sf::RenderWindow& window)
 				{
 					// Set Tiles to red/Goal
 					m_tiles[i][j]->setType(2);
-					m_goalTile++;
 				}
 
 				if (m_tiles[i][j]->getType() == 2)
@@ -104,6 +105,7 @@ void TileMap::tileSetting(sf::RenderWindow& window)
 
 void TileMap::render(sf::RenderWindow& window)
 {
+
 	for (int i = 0; i < m_maxSize; i++)
 	{
 		for (int j = 0; j < m_maxSize; j++)
@@ -111,4 +113,6 @@ void TileMap::render(sf::RenderWindow& window)
 			m_tiles[i][j]->render(window);
 		}
 	}
+
+	m_entity->render(window);
 }

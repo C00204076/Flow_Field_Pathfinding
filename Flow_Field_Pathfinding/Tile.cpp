@@ -36,6 +36,12 @@ void Tile::initialise()
 	setColour();
 	m_square.setOutlineColor(sf::Color::Black);
 	m_square.setPosition(m_x * 29, m_y * 29);
+
+	m_valueText.setCharacterSize(7);
+	m_valueText.setColor(sf::Color::White);
+
+	m_position.x = m_x * 29;
+	m_position.y = m_y * 29;
 }
 
 
@@ -55,6 +61,12 @@ int Tile::getType()
 sf::Vector2f Tile::getPosition()
 {
 	return m_position;
+}
+
+//
+sf::Vector2f Tile::getWorldPosition()
+{
+	return sf::Vector2f(m_position.x * 29, m_position.y * 29);
 }
 
 //
@@ -86,6 +98,7 @@ void Tile::setColour()
 	else if (m_type == 1)
 	{
 		m_square.setFillColor(sf::Color::Green);
+		m_value = 0;
 	}
 	//
 	else if (m_type == 2)
@@ -110,4 +123,10 @@ void Tile::setType(int type)
 {
 	m_type = type;
 	setColour();
+}
+
+//
+void Tile::setValue(int value)
+{
+	m_value = value
 }

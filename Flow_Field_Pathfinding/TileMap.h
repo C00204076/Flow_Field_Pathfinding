@@ -12,6 +12,9 @@
 #include "Tile.h"
 
 //
+class Entity;
+
+//
 class TileMap
 {
 public:
@@ -28,9 +31,9 @@ private:
 
 	float m_maxSize;
 	Tile* m_tiles[50][50];
-
-	int m_startTile, m_goalTile;
+	Entity* m_entity;
 	
 };
 
+#include "Entity.h"
 #endif // !TILEMAP_H
