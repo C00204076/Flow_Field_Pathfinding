@@ -96,6 +96,7 @@ void Tile::setColour()
 	else if (m_type == 3)
 	{
 		m_square.setFillColor(sf::Color::Black);
+		m_value = 999;
 	}
 	//
 	else if (m_type == 4)

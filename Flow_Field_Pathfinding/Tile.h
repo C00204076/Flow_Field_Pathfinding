@@ -39,6 +39,7 @@ private:
 	sf::RectangleShape m_square;
 	sf::Vector2f m_position;
 	int m_type, m_x, m_y;
+	int m_value;
 };
 
 #endif // !TILE_H
